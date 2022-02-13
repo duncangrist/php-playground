@@ -19,11 +19,11 @@ services:
       - COMPOSER_HOME=/home/dev/.composer
       - COMPOSER_MEMORY_LIMIT=-1
       - PHP_IDE_CONFIG=serverName=${APP_NAME}
-      - DATABASE_HOST=db
-      - DATABASE_PORT=5432
-      - DATABASE_NAME=dev
-      - POSTGRES_USER=dev
-      - POSTGRES_PASSWORD=dev
+#      - DATABASE_HOST=db
+#      - DATABASE_PORT=5432
+#      - DATABASE_NAME=dev
+#      - POSTGRES_USER=dev
+#      - POSTGRES_PASSWORD=dev
       - XDEBUG_CONFIG
 #    links:
 #      - db
