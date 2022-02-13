@@ -39,21 +39,18 @@ RUN pecl install xdebug \
         echo 'xdebug.idekey = PHPSTORM'; \
         } > /usr/local/etc/php/conf.d/99-docker-php-ext-xdebug.ini \
     && docker-php-ext-enable opcache --ini-name 10-docker-php-ext-opcache.ini \
-    && docker-php-ext-enable xdebug --ini-name 99-docker-php-ext-xdebug.ini
-
-# Remove packages only needed for building PHP exts.
-RUN apk del --rdepends g++ make autoconf pcre-dev
-
-# Install composer.
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# Clean up /tmp.
-RUN rm -rf /tmp/* /var/tmp/*
+    && docker-php-ext-enable xdebug --ini-name 99-docker-php-ext-xdebug.ini \
+    # Remove packages only needed for building PHP exts.
+    && apk del --rdepends g++ make autoconf pcre-dev \
+    # Install composer.
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+    # Clean up /tmp.
+    && rm -rf /tmp/* /var/tmp/*
 
 # Run FPM as the dev user for easy permission management.
 USER dev
 
 # Update PATH to include project binaries
-ENV PATH="/var/www/vendor/bin:/var/www/bin:/home/dev/.yarn/bin:/home/dev/.config/yarn/global/node_modules/.bin:${PATH}"
+ENV PATH="/var/www/vendor/bin:/var/www/bin:${PATH}"
 
 CMD ["php-fpm"]
