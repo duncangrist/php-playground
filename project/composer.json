@@ -1,0 +1,23 @@
+{
+  "name": "duncangrist/php-playground",
+  "type": "project",
+  "autoload": {
+    "psr-4": {
+      "PhpPlayground\\": "src/PhpPlayground/"
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "PhpPlayground\\Tests\\": "tests/PhpPlayground/"
+      }
+    }
+  },
+  "authors": [
+    {
+      "name": "Duncan Grist",
+      "email": "me@duncangrist.com"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
+  }
+}
